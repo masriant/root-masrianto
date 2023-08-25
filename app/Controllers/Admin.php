@@ -9,21 +9,22 @@ class Admin extends BaseController
     public function __construct()
     {
         
-        $this->db = \Config\Database::connect();
-        $this->builder    = $db->table('users');
+        $this->db       = \Config\Database::connect();
+        $this->builder  = $this->db->table('users');
     }
+    // ----------------------------------------------------------------------------------------------------- //
+
     public function index(): string
     {
         $data['title'] = 'User List';
         // $users = new \Myth\Auth\Models\UserModel();
         // $data['users'] = $users->findAll();
 
-        $this->db = \Config\Database::connect();
-        $this->builder    = $db->table('users');
-        $this->builder->select('users.id as userid, username, email, name');
+        
+        $this->builder->select('users.id as userid, username, fullname, email, name');
         $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
         $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $query  = $builder->get();
+        $query  = $this->builder->get();
 
         $data['users']  = $query->getResult();
 
@@ -33,19 +34,23 @@ class Admin extends BaseController
 
     // ----------------------------------------------------------------------------------------------------- //
 
-    public function detail($id): string
+    public function detail($id = 0)
     {
         $data['title'] = 'User Details';
         
 
-        $builder->select('users.id as userid, username, email, name');
-        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $query  = $builder->get();
+        $this->builder->select('users.id as userid, username, email, fullname, user_image, name, updated_at');
+        $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $this->builder->where('users.id', $id);
+        $query  = $this->builder->get();
 
-        $data['users']  = $query->getResult();
+        $data['user']  = $query->getRow();
 
+        if(empty($data['user'])) {
+            return redirect()->to('/admin');
+        }
 
-        return view('admin/index', $data);
+        return view('admin/detail', $data);
     }
 }

@@ -35,7 +35,11 @@ $routes->get('/user', 'User::index');
 $routes->get('/user/index', 'User::index');
 $routes->get('/user/edit', 'User::edit');
 
-// Admin Routes
+// Auth Routes Login
+$routes->get('/', 'Home::index', ['filter' => 'login']);
+$routes->get('/home', 'Home::index', ['filter' => 'login']);
+
+// Admin Routes Admin
 // $routes->get('/users', 'User::index');
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
@@ -43,9 +47,6 @@ $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
 
 
 
-// Auth Routes
-$routes->get('/', 'Home::index', ['filter' => 'login']);
-$routes->get('/home', 'Home::index', ['filter' => 'login']);
 
 
 
