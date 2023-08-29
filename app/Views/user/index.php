@@ -28,7 +28,7 @@
                                 <li class="list-group-item"><?= user()->email; ?></li>
                             </ul>
                             <hr>
-                            <p class="card-text"><small class="text-body-secondary">Member since : <?= user()->created_at; ?></small></p>
+                            <p class="card-text"><small class="text-body-secondary">Last Update : <?= user()->updated_at; ?></small></p>
                         </div>
                     </div>
                 </div>

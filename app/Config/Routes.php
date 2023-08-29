@@ -33,7 +33,11 @@ $routes->set404Override();
 $routes->get('/', 'User::index');
 $routes->get('/user', 'User::index');
 $routes->get('/user/index', 'User::index');
-$routes->get('/user/edit', 'User::edit');
+$routes->get('/user/edit/(:num)', 'User::edit/$1');
+$routes->post('/user/update/(:segment)', 'User::index');
+// $routes->post('/user/update/(:segment)', 'User::update/$1');
+// $routes->post('/user/save', 'User::save');
+// $routes->delete('/user/(:num)', 'User::delete/$1');
 
 // Auth Routes Login
 $routes->get('/', 'Home::index', ['filter' => 'login']);

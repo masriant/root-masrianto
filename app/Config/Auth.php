@@ -4,6 +4,7 @@ namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 use Myth\Auth\Config\Auth as AuthConfig;
+// use Myth\Auth\Language\id;
 
 class Auth extends AuthConfig
 {

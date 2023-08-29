@@ -20,7 +20,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                     My Profile
                 </a>
-                <a class="nav-link" href="<?= base_url('user'); ?>/edit">
+                <a class="nav-link" href="<?= base_url('user/edit/' . user()->id); ?>">
                     <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
                     Edit Profile
                 </a>

@@ -37,9 +37,9 @@ class Email extends BaseConfig
     public string $SMTPUser = 'masrianto.lakip@gmail.com';
 
     /**
-     * SMTP Password
+     * SMTP Password Cempak4_utar44
      */
-    public string $SMTPPass = 'Cempak4_utar44';
+    public string $SMTPPass = '';
 
     /**
      * SMTP Port

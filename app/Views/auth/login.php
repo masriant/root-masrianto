@@ -6,7 +6,9 @@
         <div class="col-lg-5">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header">
-                    <h3 class="text-center font-weight-light my-4"><?= lang('Auth.loginTitle') ?></h3>
+                    <p class="text-center font-weight-light my-2">SSO LAKIP<br>Lembaga Administrasi Keuangan dan Ilmu Pemerintahan</p>
+                    <hr>
+                    <h5 class="text-center font-weight-light my-2">Member <?= lang('Auth.loginTitle') ?></h5>
                 </div>
                 <div class="card-body">
                     <?= view('Myth\Auth\Views\_message_block') ?>

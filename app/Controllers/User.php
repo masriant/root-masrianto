@@ -36,5 +36,40 @@ class User extends BaseController
         return view('user/index', $data);
     }
 
-    
+    public function edit($id)
+    {
+        $data['title'] = 'Edit Profile';
+
+        $this->builder->select('users.id as userid, username, email, fullname, user_image, name, updated_at');
+        $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $this->builder->where('users.id', $id);
+        $query  = $this->builder->get();
+
+        $data['user']  = $query->getRow();
+
+        if(empty($data['user'])) {
+            return redirect()->to('/user');
+        }
+
+        return view('user/edit', $data);
+    }
+    public function update($id)
+    {
+        $data['title'] = 'Update Profile';
+
+        $this->builder->select('users.id as userid, username, email, fullname, user_image, name, updated_at');
+        $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $this->builder->where('users.id', $id);
+        $query  = $this->builder->get();
+
+        $data['user']  = $query->getRow();
+
+        if(empty($data['user'])) {
+            return redirect()->to('user');
+        }
+
+        return view('user/index', $data);
+    }
 }
