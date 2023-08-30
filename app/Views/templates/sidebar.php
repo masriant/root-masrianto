@@ -10,6 +10,18 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         User List
                     </a>
+                    <a class="nav-link" href="<?= base_url('admin/members'); ?>">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Member List
+                    </a>
+                    <a class="nav-link" href="<?= base_url('admin/create'); ?>">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Tambah Member
+                    </a>
+                    <a class="nav-link" href="<?= base_url('admin/role'); ?>">
+                        <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
+                        Role User
+                    </a>
                 <?php endif; ?>
 
                 <div class="sb-sidenav-menu-heading">USER PROFILE</div>

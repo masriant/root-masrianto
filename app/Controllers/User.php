@@ -72,4 +72,36 @@ class User extends BaseController
 
         return view('user/index', $data);
     }
+
+    // ----------------------------------------------------------------------------------------------------- //
+    
+    public function detail($id = 0)
+    {
+        $data['title'] = 'User Details';
+        
+        
+        // $this->builder->select('users.id as userid, username, email, fullname, user_image, name, updated_at');
+        // $this->builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        // $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        // ----------------------------------------------------------------------------------------------------- //
+        
+        $db       = \Config\Database::connect();
+        $builder  = $db->table('member');
+        
+        $builder->select('id_member, username, jabatan, email, user_image, name, aktivasi');
+        // $query  = $builder->get();
+        
+        
+        // ----------------------------------------------------------------------------------------------------- //
+        $this->builder->where('id_member', $id);
+        $query  = $this->builder->get();
+
+        $data['user']  = $query->getRow();
+
+        if(empty($data['user'])) {
+            return redirect()->to('/admin');
+        }
+
+        return view('user/detail', $data);
+    }
 }

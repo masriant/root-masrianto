@@ -35,6 +35,7 @@ $routes->get('/user', 'User::index');
 $routes->get('/user/index', 'User::index');
 $routes->get('/user/edit/(:num)', 'User::edit/$1');
 $routes->post('/user/update/(:segment)', 'User::index');
+// $routes->get('/user/detail/(:num)', 'User::detail/$1');
 // $routes->post('/user/update/(:segment)', 'User::update/$1');
 // $routes->post('/user/save', 'User::save');
 // $routes->delete('/user/(:num)', 'User::delete/$1');
@@ -47,6 +48,9 @@ $routes->get('/home', 'Home::index', ['filter' => 'login']);
 // $routes->get('/users', 'User::index');
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
+$routes->get('/admin/members', 'Admin::members', ['filter' => 'role:admin']);
+$routes->get('/admin/create', 'Admin::create', ['filter' => 'role:admin']);
+$routes->get('/admin/member/(:any)', 'Admin::member/$1', ['filter' => 'role:admin']);
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
 
 
